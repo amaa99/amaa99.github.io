@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  Sample Movies and Songs
-</head>
+	<head>
+  		<title>Sample Movies and Songs</title>
+	</head>
 <style>
 h1, tr {
   font-family: Tahoma, Geneva, sans-serif;
 }
 table, th, td {
-    border: 2px solid black;
+    border: 1px solid black;
     border-collapse: collapse;
     padding: 5px;
+}
+th#movies, h1#movies { color: tomato;
+}
+th#songs, h1#songs { color: slateblue;
 }
 img#poster { 
 width:300px;
@@ -20,13 +24,13 @@ margin: auto:
 }
 </style>
 <body>
-  <h1>Movies</h1>
+  <h1 id="movies">Movies</h1>
   <img id="poster" src="http://is1.mzstatic.com/image/thumb/Video4/v4/69/97/72/69977202-baa8-227d-26eb-18eddcc6c3f2/source/1200x630bb.jpg">
   <table>
     <tr>
-      <th id="Movies">Title</th>
-      <th id="Movies">Summary</th>
-      <th id="Movies">Rating</th>
+      <th id="movies">Title</th>
+      <th id="movies">Summary</th>
+      <th id="movies">Rating</th>
     </tr>
     <tr>
       <td>Deadpool</td>
@@ -51,14 +55,14 @@ margin: auto:
     </tr>
   </table>
   
-  <h1>Songs</h1>
+  <h1 id="songs">Songs</h1>
   <iframe width="560" height="315" src="https://www.youtube.com/embed/y6120QOlsfU" frameborder="0" allowfullscreen></iframe>
   <table>
     <tr>
-      <th>Title</th>
-      <th>Album</th>
-      <th>Artist</th>
-      <th>Lyrics</th>
+      <th id="songs">Title</th>
+      <th id="songs">Album</th>
+      <th id="songs">Artist</th>
+      <th id="songs">Lyrics</th>
     </tr>
     <tr>
       <td>Sandstorm</td>
