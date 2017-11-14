@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <body>
 <script>
 var
@@ -6,8 +5,8 @@ var
 /**
  * Constats
  */
-COLS = 26,
-ROWS = 26,
+COLS = 30,
+ROWS = 30,
 
 EMPTY = 0,
 SNAKE = 1,
@@ -18,10 +17,10 @@ UP    = 1,
 RIGHT = 2,
 DOWN  = 3,
 
-KEY_LEFT  = 37,
-KEY_UP    = 38,
-KEY_RIGHT = 39,
-KEY_DOWN  = 40,
+KEY_LEFT  = 65,
+KEY_UP    = 87,
+KEY_RIGHT = 68,
+KEY_DOWN  = 83,
 
 
 /**
@@ -31,7 +30,7 @@ canvas,	  /* HTMLCanvas */
 ctx,	  /* CanvasRenderingContext2d */
 keystate, /* Object, used for keyboard inputs */
 frames,   /* number, used for animation */
-score;	  /* number, keep track of the player score */
+length;	  /* number, keep track of the player length */
 
 
 /**
@@ -152,8 +151,10 @@ function setFood() {
 		}
 	}
 	// chooses a random cell
-	var randpos = empty[Math.round(Math.random()*(empty.length - 1))];
+	var randpos = empty[Math.round(Math.random()*(empty.length - 2))];
 	grid.set(FRUIT, randpos.x, randpos.y);
+  var randpos = empty[Math.round(Math.random()*(empty.length - 2))];
+	grid.set(SNAKE, randpos.x, randpos.y);
 }
 
 /**
@@ -162,14 +163,14 @@ function setFood() {
 function main() {
 	// create and initiate the canvas element
 	canvas = document.createElement("canvas");
-	canvas.width = COLS*20;
-	canvas.height = ROWS*20;
+	canvas.width = COLS*15;
+	canvas.height = ROWS*15;
 	ctx = canvas.getContext("2d");
 	// add the canvas element to the body of the document
 	document.body.appendChild(canvas);
 
-	// sets an base font for bigger score display
-	ctx.font = "12px Helvetica";
+	// sets an base font for bigger length display
+	ctx.font = "15px Helvetica";
 
 	frames = 0;
 	keystate = {};
@@ -190,7 +191,7 @@ function main() {
  * Resets and inits game objects
  */
 function init() {
-	score = 0;
+	length = 1;
 
 	grid.init(EMPTY, COLS, ROWS);
 
@@ -266,8 +267,8 @@ function update() {
 
 		// check wheter the new position are on the fruit item
 		if (grid.get(nx, ny) === FRUIT) {
-			// increment the score and sets a new fruit position
-			score++;
+			// increment the length and sets a new fruit position
+			length++;
 			setFood();
 		} else {
 			// take out the first item from the snake queue i.e
@@ -309,14 +310,14 @@ function draw() {
 			ctx.fillRect(x*tw, y*th, tw, th);
 		}
 	}
-	// changes the fillstyle once more and draws the score
+	// changes the fillstyle once more and draws the length
 	// message to the canvas
 	ctx.fillStyle = "#3bd";
-	ctx.fillText("SCORE: " + score, 10, canvas.height-10);
+  ctx.fillText(/*"length: " */+ length, 10, canvas.height-10);
 }
 
 // start and run the game
 main();
-</script><canvas width="520" height="520"></canvas>
+</script><canvas width="1000" height="1000"></canvas>
 
 </body>
